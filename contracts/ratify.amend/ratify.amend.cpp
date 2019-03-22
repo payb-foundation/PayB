@@ -47,11 +47,11 @@ void ratifyamend::makeproposal(string prop_title, uint64_t doc_id, uint8_t new_c
 
     eosio_assert(new_clause_num <= doc.clauses.size() + 1 && new_clause_num >= 0, "new clause num is not valid");
 
-    //NOTE: 100.0000 TLOS fee, refunded if proposal passes or meets specified lower thresholds
+    //NOTE: 100.0000 PAYB fee, refunded if proposal passes or meets specified lower thresholds
     action(permission_level{ proposer, N(active) }, N(eosio.token), N(transfer), make_tuple(
     	proposer,
         _self,
-        asset(int64_t(1000000), S(4, TLOS)),
+        asset(int64_t(1000000), S(4, PAYB)),
         std::string("Ratify/Amend Proposal Fee")
 	)).send();
 
@@ -201,7 +201,7 @@ void ratifyamend::closeprop(uint64_t proposal_id, account_name proposer) {
         action(permission_level{ _self, N(active) }, N(eosio.token), N(transfer), make_tuple(
             _self,
             prop.proposer,
-            asset(int64_t(1000000), S(4, TLOS)),
+            asset(int64_t(1000000), S(4, PAYB)),
             std::string("Ratify/Amend Proposal Fee Refund")
         )).send();
 
@@ -218,7 +218,7 @@ void ratifyamend::closeprop(uint64_t proposal_id, account_name proposer) {
         action(permission_level{ _self, N(active) }, N(eosio.token), N(transfer), make_tuple(
             _self,
             prop.proposer,
-            asset(int64_t(1000000), S(4, TLOS)),
+            asset(int64_t(1000000), S(4, PAYB)),
             std::string("Ratify/Amend Proposal Fee Refund")
         )).send();
         

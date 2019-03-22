@@ -98,7 +98,7 @@ asset get_eosio_token_balance(symbol_name sym, account_name owner) {
     return amount;
 }
 
-asset get_liquid_tlos(account_name owner) {
+asset get_liquid_payb(account_name owner) {
     accounts accountstable(N(eosio.token), owner);
     auto a = accountstable.find(asset(0).symbol.name());
 
@@ -112,7 +112,7 @@ asset get_liquid_tlos(account_name owner) {
     return asset(amount);
 }
 
-asset get_staked_tlos(account_name owner) {
+asset get_staked_payb(account_name owner) {
     user_resources_table userres(N(eosio), owner);
     auto r = userres.find(owner);
 

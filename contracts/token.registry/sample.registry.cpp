@@ -11,7 +11,7 @@ registry::registry(account_name self) : contract(self), _config(self, self) {
         //NOTE: Developers edit here
         config = tokenconfig{
             self, //publisher
-            "Telos Test Token", //token_name
+            "PayB Test Token", //token_name
             asset(int64_t(10000), S(2, TEST)), //max_supply
             asset(int64_t(0), S(2, TEST)) //supply
         };

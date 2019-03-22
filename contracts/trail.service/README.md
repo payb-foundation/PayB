@@ -4,7 +4,7 @@ Trail offers a comprehensive suite of blockchain-based contract services.
 
 ## Voting and Ballot/Voter Registration
 
-All users on the Telos Blockchain Network can register their account and receive a VoterID card that can be used in any Ballot or Election running on Trail. Developers can easily integrate with Trail by including the `traildef.voting.hpp` plugin in their contracts.
+All users on the PayB Blockchain Network can register their account and receive a VoterID card that can be used in any Ballot or Election running on Trail. Developers can easily integrate with Trail by including the `traildef.voting.hpp` plugin in their contracts.
 
 ### Voting Actions
 

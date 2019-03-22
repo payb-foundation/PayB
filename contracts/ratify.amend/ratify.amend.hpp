@@ -1,12 +1,12 @@
 /**
- * The ratify/amend contract is used to submit proposals for ratifying and amending major documents in the Telos Network. Users register their
+ * The ratify/amend contract is used to submit proposals for ratifying and amending major documents in the PayB Network. Users register their
  * account through the Trail Service, where they will be issued a VoterID card that tracks and stores their vote participation. Once registered,
- * users can then cast votes equal to their weight of staked TLOS on proposals to update individual clauses within a document. Submitting a 
- * proposal requires a deposit of TLOS. The deposit will be refunded if proposal reaches a minimum threshold of participation and acceptance
+ * users can then cast votes equal to their weight of staked PAYB on proposals to update individual clauses within a document. Submitting a 
+ * proposal requires a deposit of PAYB. The deposit will be refunded if proposal reaches a minimum threshold of participation and acceptance
  * by registered voters (even if the proposal itself fails to pass).
  * 
  * @author Craig Branscom
- * @copyright defined in telos/LICENSE.txt
+ * @copyright defined in payb/LICENSE.txt
  */
 
 #include <../trail.service/trail.defs/trail.voting.hpp>

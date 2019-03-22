@@ -35,7 +35,7 @@ Subcommands:
   create                      Create various items, on and off the blockchain
   get                         Retrieve various items and information from the blockchain
   set                         Set or update blockchain state
-  transfer                    Transfer TLOS from account to account
+  transfer                    Transfer PAYB from account to account
   net                         Interact with local p2p network connections
   wallet                      Interact with local wallet
   sign                        Sign a transaction
@@ -910,17 +910,17 @@ struct create_account_subcommand {
 
       if (!simple) {
          createAccount->add_option("--stake-net", stake_net,
-                                   (localized("The amount of TLOS delegated for net bandwidth")))->required();
+                                   (localized("The amount of PAYB delegated for net bandwidth")))->required();
          createAccount->add_option("--stake-cpu", stake_cpu,
-                                   (localized("The amount of TLOS delegated for CPU bandwidth")))->required();
+                                   (localized("The amount of PAYB delegated for CPU bandwidth")))->required();
          createAccount->add_option("--buy-ram-kbytes", buy_ram_bytes_in_kbytes,
                                    (localized("The amount of RAM bytes to purchase for the new account in kibibytes (KiB)")));
          createAccount->add_option("--buy-ram-bytes", buy_ram_bytes,
                                    (localized("The amount of RAM bytes to purchase for the new account in bytes")));
          createAccount->add_option("--buy-ram", buy_ram_eos,
-                                   (localized("The amount of RAM bytes to purchase for the new account in TLOS")));
+                                   (localized("The amount of RAM bytes to purchase for the new account in PAYB")));
          createAccount->add_flag("--transfer", transfer,
-                                 (localized("Transfer voting power and right to unstake TLOS to receiver")));
+                                 (localized("Transfer voting power and right to unstake PAYB to receiver")));
       }
 
       add_standard_transaction_options(createAccount);
@@ -1208,11 +1208,11 @@ struct delegate_bandwidth_subcommand {
       auto delegate_bandwidth = actionRoot->add_subcommand("delegatebw", localized("Delegate bandwidth"));
       delegate_bandwidth->add_option("from", from_str, localized("The account to delegate bandwidth from"))->required();
       delegate_bandwidth->add_option("receiver", receiver_str, localized("The account to receive the delegated bandwidth"))->required();
-      delegate_bandwidth->add_option("stake_net_quantity", stake_net_amount, localized("The amount of TLOS to stake for network bandwidth"))->required();
-      delegate_bandwidth->add_option("stake_cpu_quantity", stake_cpu_amount, localized("The amount of TLOS to stake for CPU bandwidth"))->required();
-      delegate_bandwidth->add_option("--buyram", buy_ram_amount, localized("The amount of TLOS to buyram"));
+      delegate_bandwidth->add_option("stake_net_quantity", stake_net_amount, localized("The amount of PAYB to stake for network bandwidth"))->required();
+      delegate_bandwidth->add_option("stake_cpu_quantity", stake_cpu_amount, localized("The amount of PAYB to stake for CPU bandwidth"))->required();
+      delegate_bandwidth->add_option("--buyram", buy_ram_amount, localized("The amount of PAYB to buyram"));
 	  delegate_bandwidth->add_option("--buy-ram-bytes", buy_ram_bytes, localized("The amount of RAM to buy in number of bytes"));
-      delegate_bandwidth->add_flag("--transfer", transfer, localized("Transfer voting power and right to unstake TLOS to receiver"));
+      delegate_bandwidth->add_flag("--transfer", transfer, localized("Transfer voting power and right to unstake PAYB to receiver"));
       add_standard_transaction_options(delegate_bandwidth);
 
       delegate_bandwidth->set_callback([this] {
@@ -1245,8 +1245,8 @@ struct undelegate_bandwidth_subcommand {
       auto undelegate_bandwidth = actionRoot->add_subcommand("undelegatebw", localized("Undelegate bandwidth"));
       undelegate_bandwidth->add_option("from", from_str, localized("The account undelegating bandwidth"))->required();
       undelegate_bandwidth->add_option("receiver", receiver_str, localized("The account to undelegate bandwidth from"))->required();
-      undelegate_bandwidth->add_option("unstake_net_quantity", unstake_net_amount, localized("The amount of TLOS to undelegate for network bandwidth"))->required();
-      undelegate_bandwidth->add_option("unstake_cpu_quantity", unstake_cpu_amount, localized("The amount of TLOS to undelegate for CPU bandwidth"))->required();
+      undelegate_bandwidth->add_option("unstake_net_quantity", unstake_net_amount, localized("The amount of PAYB to undelegate for network bandwidth"))->required();
+      undelegate_bandwidth->add_option("unstake_cpu_quantity", unstake_cpu_amount, localized("The amount of PAYB to undelegate for CPU bandwidth"))->required();
       add_standard_transaction_options(undelegate_bandwidth);
 
       undelegate_bandwidth->set_callback([this] {
@@ -1268,7 +1268,7 @@ struct bidname_subcommand {
       auto bidname = actionRoot->add_subcommand("bidname", localized("Name bidding"));
       bidname->add_option("bidder", bidder_str, localized("The bidding account"))->required();
       bidname->add_option("newname", newname_str, localized("The bidding name"))->required();
-      bidname->add_option("bid", bid_amount, localized("The amount of TLOS to bid"))->required();
+      bidname->add_option("bid", bid_amount, localized("The amount of PAYB to bid"))->required();
       add_standard_transaction_options(bidname);
       bidname->set_callback([this] {
          fc::variant act_payload = fc::mutable_variant_object()
@@ -1361,7 +1361,7 @@ struct buyram_subcommand {
       auto buyram = actionRoot->add_subcommand("buyram", localized("Buy RAM"));
       buyram->add_option("payer", from_str, localized("The account paying for RAM"))->required();
       buyram->add_option("receiver", receiver_str, localized("The account receiving bought RAM"))->required();
-      buyram->add_option("amount", amount, localized("The amount of TLOS to pay for RAM, or number of bytes/kibibytes of RAM if --bytes/--kbytes is set"))->required();
+      buyram->add_option("amount", amount, localized("The amount of PAYB to pay for RAM, or number of bytes/kibibytes of RAM if --bytes/--kbytes is set"))->required();
       buyram->add_flag("--kbytes,-k", kbytes, localized("buyram in number of kibibytes (KiB)"));
       buyram->add_flag("--bytes,-b", bytes, localized("buyram in number of bytes"));
       add_standard_transaction_options(buyram);
@@ -1383,7 +1383,7 @@ struct sellram_subcommand {
 
    sellram_subcommand(CLI::App* actionRoot) {
       auto sellram = actionRoot->add_subcommand("sellram", localized("Sell RAM"));
-      sellram->add_option("account", receiver_str, localized("The account to receive TLOS for sold RAM"))->required();
+      sellram->add_option("account", receiver_str, localized("The account to receive PAYB for sold RAM"))->required();
       sellram->add_option("bytes", amount, localized("Number of RAM bytes to sell"))->required();
       add_standard_transaction_options(sellram);
 
@@ -2477,11 +2477,11 @@ int main( int argc, char** argv ) {
    string recipient;
    string amount;
    string memo;
-   auto transfer = app.add_subcommand("transfer", localized("Transfer TLOS from account to account"), false);
+   auto transfer = app.add_subcommand("transfer", localized("Transfer PAYB from account to account"), false);
    bool pay_ram = false;
-   transfer->add_option("sender", sender, localized("The account sending TLOS"))->required();
-   transfer->add_option("recipient", recipient, localized("The account receiving TLOS"))->required();
-   transfer->add_option("amount", amount, localized("The amount of TLOS to send"))->required();
+   transfer->add_option("sender", sender, localized("The account sending PAYB"))->required();
+   transfer->add_option("recipient", recipient, localized("The account receiving PAYB"))->required();
+   transfer->add_option("amount", amount, localized("The amount of PAYB to send"))->required();
    transfer->add_option("memo", memo, localized("The memo for the transfer"));
    transfer->add_option("--contract,-c", con, localized("The contract which controls the token"));
    transfer->add_flag("--pay-ram-to-open", pay_ram, localized("Pay ram to open recipient's token balance row"));

@@ -332,7 +332,7 @@ void system_contract::claimrewards_snapshot(){
         auto to_workers = new_tokens - to_producers; //60% to WP's
 
         INLINE_ACTION_SENDER(eosio::token, issue)
-        (N(eosio.token), {{N(eosio), N(active)}}, {N(eosio), asset(new_tokens), "Issue new TLOS tokens"});
+        (N(eosio.token), {{N(eosio), N(active)}}, {N(eosio), asset(new_tokens), "Issue new PAYB tokens"});
 
         INLINE_ACTION_SENDER(eosio::token, transfer)
         (N(eosio.token), {N(eosio), N(active)}, {N(eosio), N(eosio.saving), asset(to_workers), "Transfer worker proposal share to eosio.saving account"});
@@ -406,7 +406,7 @@ void system_contract::claimrewards_snapshot(){
 /**
  * RATIONALE: Minimum Unpaid Blocks Threshold
  *
- * In the Telos Payment Architecture, block reward payments are calculated on the fly at the time
+ * In the PayB Payment Architecture, block reward payments are calculated on the fly at the time
  * of the call to claimrewards. When called, the claimrewards function determines which payment level
  * each producer qualifies for and saves their payment to the payments table. Payments are then doled
  * out over the course of a day to the intended recipient.

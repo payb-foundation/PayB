@@ -367,7 +367,7 @@ namespace eosiosystem {
                });
          }
          eosio_assert( 0 <= from_voter->staked, "stake for voting cannot be negative");
-      // update to telosfoundation account
+      // update to paybfoundation account
       //    if( from == N(b1) ) {
       //       validate_b1_vesting( from_voter->staked );
       //    }

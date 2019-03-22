@@ -157,9 +157,9 @@ void trail::mirrorstake(account_name voter, uint32_t lock_period) {
     eosio_assert(lock_period >= MIN_LOCK_PERIOD, "lock period must be greater than 1 day (86400 secs)");
     eosio_assert(lock_period <= MAX_LOCK_PERIOD, "lock period must be less than 3 months (7,776,000 secs)");
 
-    asset max_votes = get_liquid_tlos(voter) + get_staked_tlos(voter);
-    eosio_assert(max_votes.symbol == S(4, TLOS), "only TLOS can be used to get VOTEs"); //NOTE: redundant?
-    eosio_assert(max_votes > asset(0, S(4, TLOS)), "must get a positive amount of VOTEs"); //NOTE: redundant?
+    asset max_votes = get_liquid_payb(voter) + get_staked_payb(voter);
+    eosio_assert(max_votes.symbol == S(4, PAYB), "only PAYB can be used to get VOTEs"); //NOTE: redundant?
+    eosio_assert(max_votes > asset(0, S(4, PAYB)), "must get a positive amount of VOTEs"); //NOTE: redundant?
     
     voters_table voters(N(eosio.trail), N(eosio.trail));
     auto v = voters.find(voter);
@@ -171,7 +171,7 @@ void trail::mirrorstake(account_name voter, uint32_t lock_period) {
     votelevies_table votelevies(N(eosio.trail), N(eosio.trail));
     auto vl = votelevies.find(voter);
 
-    auto new_votes = asset(max_votes.amount, S(4, VOTE)); //mirroring TLOS amount, not spending/locking it up
+    auto new_votes = asset(max_votes.amount, S(4, VOTE)); //mirroring PAYB amount, not spending/locking it up
     asset decay_amount = calc_decay(voter, new_votes);
     
     if (vl != votelevies.end()) { //NOTE: if no levy found, give levy of 0

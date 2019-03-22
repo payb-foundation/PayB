@@ -48,7 +48,7 @@
    DISK_MIN=20
    DOXYGEN=false
    ENABLE_COVERAGE_TESTING=false
-   CORE_SYMBOL_NAME="TLOS"
+   CORE_SYMBOL_NAME="PAYB"
    # Use current directory's tmp directory if noexec is enabled for /tmp
    if (mount | grep "/tmp " | grep --quiet noexec); then
         mkdir -p $SOURCE_DIR/tmp
@@ -156,7 +156,7 @@
          printf "\\tExiting now.\\n"
          exit 1
       fi
-      
+
 	  OS_NAME=$( cat /etc/os-release | grep ^NAME | cut -d'=' -f2 | sed 's/\"//gI' )
 
       case "$OS_NAME" in
@@ -291,14 +291,14 @@
 	printf "\t                                 \n${txtrst}";
 
 	printf "\\tTo verify your installation run the following commands:\\n"
-	
+
 	print_instructions
 
 	printf "\\tFor more information:\\n"
-	printf "\\tTELOS Website:     https://telosfoundation.io\\n"
-	printf "\\tTELOS Telegram:    https://t.me/HelloTelos\\n"
-	printf "\\tTELOS Wiki:        https://github.com/Telos-Foundation/telos/wiki\\n\\n\\n"
-				
+	printf "\\tTELOS Website:     https://paybfoundation.io\\n"
+	printf "\\tTELOS Telegram:    https://t.me/HelloPayB\\n"
+	printf "\\tTELOS Wiki:        https://github.com/PayB-Foundation/payb/wiki\\n\\n\\n"
+
 	if [ "x${EOSIO_BUILD_PACKAGE}" != "x" ]; then
 	  # Build eos.io package
 		if ! "$CMAKE" -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" -DCMAKE_CXX_COMPILER="${CXX_COMPILER}" \

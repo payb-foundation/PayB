@@ -25,7 +25,7 @@ class trail : public contract {
 
         #pragma region Constants
 
-        uint64_t const VOTE_ISSUE_RATIO = 1; //indicates a 1:1 TLOS/VOTE issuance
+        uint64_t const VOTE_ISSUE_RATIO = 1; //indicates a 1:1 PAYB/VOTE issuance
 
         uint32_t const MIN_LOCK_PERIOD = 86400; //86,400 seconds is ~1 day
 

@@ -207,9 +207,9 @@ add_subdirectory( externals )
 
 # TELOS CHANGES:
 #
-# 1. Changed core symbol to TLOS
+# 1. Changed core symbol to PAYB
 if ("${CORE_SYMBOL_NAME}" STREQUAL "")
-  set( CORE_SYMBOL_NAME "TLOS" )
+  set( CORE_SYMBOL_NAME "PAYB" )
 endif()
 string(TOUPPER ${CORE_SYMBOL_NAME} CORE_SYMBOL_NAME)
 

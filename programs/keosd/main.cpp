@@ -36,8 +36,8 @@ bfs::path determine_home_directory()
 
 /**
  * TELOS CHANGES:
- * 
- * 1. Renamed default wallet folder to telos-wallet for dinstinction between EOS
+ *
+ * 1. Renamed default wallet folder to payb-wallet for dinstinction between EOS
  */
 int main(int argc, char** argv)
 {

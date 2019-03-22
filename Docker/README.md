@@ -15,7 +15,7 @@ Simple and fast setup of EOS.IO on Docker is also available.
 ## Build eos image
 
 ```bash
-git clone https://github.com/Telos-Foundation/telos.git --recursive  --depth 1
+git clone https://github.com/PayB-Foundation/payb.git --recursive  --depth 1
 cd eos/Docker
 docker build . -t eosio/eos
 ```
@@ -29,7 +29,7 @@ docker build -t eosio/eos:v1.4.5 --build-arg branch=v1.4.5 .
 By default, the symbol in eosio.system is set to SYS. You can override this using the symbol argument while building the docker image.
 
 ```bash
-docker build -t eosio/eos --build-arg symbol=TLOS .
+docker build -t eosio/eos --build-arg symbol=PAYB .
 ```
 
 ## Start nodeos docker container only
